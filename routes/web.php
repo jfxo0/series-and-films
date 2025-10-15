@@ -50,8 +50,8 @@ Route::get('/about-us', function() {
     return view('slot', compact());
 });
 
-
-Route::get('/series', [SerieController::class, 'index']);
-Route::get('/series/{serie}', [SerieController::class, 'show'])->name('series.show');
+Route::resource('series', SerieController::class);
+//Route::get('/series', [SerieController::class, 'index']);
+//Route::get('/series/{serie}', [SerieController::class, 'show'])->name('series.show');
 
 require __DIR__.'/auth.php';
