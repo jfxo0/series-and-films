@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-layout>
 
     <h1>this is {{$serie}}</h1>
-</x-app-layout>
+</x-layout>
