@@ -14,3 +14,8 @@
 ## 2025-10-22 (woensdag)
 - ik was vergeten een changelog te maken dus heb een changelog toegevoegd.
 - een layout navigatie toegevoegd
+
+## 2025-10-23 (donderdag)
+- navigatie responsive gemaakt
+- je kan nu informatie zien als je op de link click van een specifieke serie
+- een about page toegevoegd

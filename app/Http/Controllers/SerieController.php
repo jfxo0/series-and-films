@@ -65,10 +65,10 @@ class SerieController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Serie $serie)
+    public function show(Serie $series)
     {
 
-        return view('series.show', compact('serie'));
+        return view('series.show', compact('series'));
     }
 
     /**
