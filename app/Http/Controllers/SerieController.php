@@ -41,11 +41,11 @@ class SerieController extends Controller
 
         $request->validate([
             'name' => ['required', 'string'],
-            'episodes' => $request-> input('required', 'string'),
-            'status' => $request-> input('required', 'string'),
-            'info' => $request-> input('required', 'string'),
+            'episodes' => ['required', 'string'],
+            'status' => ['required', 'string'],
+            'info' => ['required', 'string'],
 //            'category_id'=> ['exists:categories'],
-            'image' => $request-> input('required', 'string'),
+            'image' => ['required', 'string'],
         ]);
 
         $serie = new Serie();
@@ -74,17 +74,32 @@ class SerieController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Serie $serie)
+    public function edit(Serie $series)
     {
         //
+
+        return view('series.edit', compact('series'));
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Serie $serie)
+    public function update(Request $request, Serie $series)
     {
         //
+       $validated= $request->validate([
+            'name' => ['required', 'string'],
+            'episodes' => ['required', 'string'],
+            'status' => ['required', 'string'],
+            'info' => ['required', 'string'],
+//            'category_id'=> ['exists:categories'],
+            'image' => ['required', 'string'],
+        ]);
+
+        $series->update($validated);
+
+        return redirect()->route('series.show', $series);
     }
 
     /**

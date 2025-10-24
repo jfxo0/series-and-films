@@ -19,3 +19,6 @@
 - navigatie responsive gemaakt
 - je kan nu informatie zien als je op de link click van een specifieke serie
 - een about page toegevoegd
+
+## 2025-10-24 (vrijdag)
+- edit page laten werken met de database en aangemaakt

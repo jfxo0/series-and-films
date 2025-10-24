@@ -9,36 +9,43 @@
 {{--    @endif--}}
 
 
-    <form action="{{ route('series.store') }}" method="POST">
+  <h1>
+      edit page
+  </h1>
+
+
+
+    <form action="{{route('series.update', $series)}}" method="POST">
         @csrf
+@method('PUT')
         <div>
             <label for="name">Serie Name:</label>
-            <input type="text" name="name" id="name" value="{{old('name')}}" required >
+            <input type="text" name="name" id="name" value="{{$series->name}}" required >
         </div>
         @error('name')
            <p class="text-red-500">{{ $message }}</p>
         @enderror
         <div>
             <label for="episodes">Episodes:</label>
-            <input type="number" name="episodes" id="episodes" value="{{old('episodes')}}" required>
+            <input type="number" name="episodes" id="episodes" value="{{$series->episodes}}" required>
         </div>
         <div>
             <label for="status">Status:</label>
-            <input type="text" name="status" id="status" value="{{old('status')}}" required>
+            <input type="text" name="status" id="status" value="{{$series->status}}" required>
         </div>
 
         <div>
             <label for="info">info:</label>
-            <input type="text" name="info" id="info" value="{{old('info')}}" required>
+            <input type="text" name="info" id="info" value="{{$series->info}}" required>
         </div>
         <div>
             <label for="image">image:</label>
-            <input type="text" name="image" id="image" value="{{old('image')}}" required>
+            <input type="text" name="image" id="image" value="{{$series->image}}" required>
         </div>
 
         <div>
             <label for="category_id">category:</label>
-            <input type="number" name="category_id" id="category_id" value="{{old('category')}}" required>
+            <input type="number" name="category_id" id="category_id" value="{{$series->category_id}}" required>
         </div>
 
 {{--        <div>--}}
@@ -46,8 +53,8 @@
 {{--            <input type="image" name="image" id="image" required>--}}
 {{--        </div>--}}
 
-        <button type="button">cancel</button>
-        <button type="submit">Save</button>
+        <a href="{{ route('series.show', $series)}}">Cancel</a>
+        <button type="submit">Update</button>
     </form>
 
 </x-layout>
