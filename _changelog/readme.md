@@ -22,3 +22,4 @@
 
 ## 2025-10-24 (vrijdag)
 - edit page laten werken met de database en aangemaakt
+- CRUD afgemaakt

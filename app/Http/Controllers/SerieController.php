@@ -105,9 +105,9 @@ class SerieController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Serie $serie)
+    public function destroy(Serie $series)
     {
-        $serie->delete();
+        $series->delete();
         return redirect()->route('series.index');
     }
 }

@@ -6,5 +6,12 @@
 <x-button href="{{route('series.index')}}">
     button go back
 </x-button>
-    <a href="{{ route('series.edit',  $series) }}">Edit page</a>
+    <x-button href="{{ route('series.edit',  $series) }}">Edit page</x-button>
+    <form action="{{ route('series.destroy', $series) }}" method="POST">
+        @csrf
+        @method('DELETE')
+
+        <button type="submit">Delete</button>
+    </form>
+
 </x-layout>
