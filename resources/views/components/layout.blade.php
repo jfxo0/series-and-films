@@ -21,12 +21,7 @@
 @if (Route::has('login'))
     <nav class="flex items-center justify-end gap-4 dark:bg-gray-800  border-b border-gray-100">
         @auth
-{{--            <a--}}
-{{--                href="{{ url('/dashboard') }}"--}}
-{{--                class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] dark:bg-gray-800  border-b border-gray-100 border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal"--}}
-{{--            >--}}
-{{--                Dashboard--}}
-{{--            </a>--}}
+
            <p class="text-fuchsia-500">hello {{ Auth::user()->name }}</p>
             <a
                 href="{{ route('series.index') }}"
@@ -61,14 +56,23 @@
                     Register
                 </a>
             @endif
+
         @endauth
+
         <a
             href="{{ route('about') }}"
             class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] text-[#1b1b18] border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal"
         >
             About
         </a>
-
+            @if(Auth::user()->role)
+                <a
+                    href=""
+                    class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] text-[#1b1b18] border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal"
+                >
+                    Admin overview
+                </a>
+            @endif
     </nav>
 @endif
 <body class="font-sans antialiased">

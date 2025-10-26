@@ -26,3 +26,4 @@
 
 ## 2025-10-26 (zondag)
 - foto files toegevoegd
+- admin toggle toegevoegd
