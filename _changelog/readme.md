@@ -23,3 +23,6 @@
 ## 2025-10-24 (vrijdag)
 - edit page laten werken met de database en aangemaakt
 - CRUD afgemaakt
+
+## 2025-10-26 (zondag)
+- foto files toegevoegd

@@ -9,7 +9,7 @@
 {{--    @endif--}}
 
 
-    <form action="{{ route('series.store') }}" method="POST">
+    <form action="{{ route('series.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div>
             <label for="name">Serie Name:</label>
@@ -33,18 +33,13 @@
         </div>
         <div>
             <label for="image">image:</label>
-            <input type="text" name="image" id="image" value="{{old('image')}}" required>
+            <input type="file" name="image" id="image" value="{{old('image')}}">
         </div>
 
         <div>
             <label for="category_id">category:</label>
             <input type="number" name="category_id" id="category_id" value="{{old('category')}}" required>
         </div>
-
-{{--        <div>--}}
-{{--            <label for="image">image:</label>--}}
-{{--            <input type="image" name="image" id="image" required>--}}
-{{--        </div>--}}
 
         <button type="button">cancel</button>
         <button type="submit">Save</button>

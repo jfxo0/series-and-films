@@ -45,8 +45,10 @@ class SerieController extends Controller
             'status' => ['required', 'string'],
             'info' => ['required', 'string'],
 //            'category_id'=> ['exists:categories'],
-            'image' => ['required', 'string'],
+            'image' => ['required', 'image', 'max:2048'],
         ]);
+
+        $nameOfFile = $request->file('image')->storePublicly('folder-name', 'public');
 
         $serie = new Serie();
         $serie->name = $request->input('name');
@@ -54,8 +56,9 @@ class SerieController extends Controller
         $serie->status = $request->input('status');
         $serie->info = $request->input('info');
         $serie->category_id = $request->input('category_id');
-        $serie->image = $request->input('image');
+        $serie->image = $nameOfFile;
 
+//
         $serie->save();
 
         return redirect()->route('series.index');
@@ -94,7 +97,7 @@ class SerieController extends Controller
             'status' => ['required', 'string'],
             'info' => ['required', 'string'],
 //            'category_id'=> ['exists:categories'],
-            'image' => ['required', 'string'],
+            'image' => ['required', 'image', 'max:2048'],
         ]);
 
         $series->update($validated);
