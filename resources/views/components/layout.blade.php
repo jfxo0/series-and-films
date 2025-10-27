@@ -41,6 +41,20 @@
             >
                 Create Serie
             </a>
+
+            <form action="{{ route('logout') }}" method="POST" >
+                @csrf
+                <button type="submit">Log Out</button>
+            </form>
+
+            @if(auth()->user()->role)
+                <a
+                    href="{{route('admin')}}"
+                    class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] text-[#1b1b18] border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal"
+                >
+                    Admin overview
+                </a>
+            @endif
         @else
             <a
                 href="{{ route('login') }}"
@@ -65,14 +79,7 @@
         >
             About
         </a>
-            @if(Auth::user()->role)
-                <a
-                    href=""
-                    class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] text-[#1b1b18] border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal"
-                >
-                    Admin overview
-                </a>
-            @endif
+
     </nav>
 @endif
 <body class="font-sans antialiased">

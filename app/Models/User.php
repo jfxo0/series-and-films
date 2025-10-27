@@ -49,6 +49,9 @@ class User extends Authenticatable
         ];
     }
 
+    public function isAdmin():bool {
+        return $this-> role === 1;
+    }
     public function series()
     {
         return $this->hasMany(Series::class);

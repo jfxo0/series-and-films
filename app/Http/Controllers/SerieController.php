@@ -48,7 +48,7 @@ class SerieController extends Controller
             'image' => ['required', 'image', 'max:2048'],
         ]);
 
-        $nameOfFile = $request->file('image')->storePublicly('folder-name', 'public');
+        $nameOfFile = $request->file('image')->storePublicly('series', 'public');
 
         $serie = new Serie();
         $serie->name = $request->input('name');
@@ -90,19 +90,30 @@ class SerieController extends Controller
      */
     public function update(Request $request, Serie $series)
     {
-        //
-       $validated= $request->validate([
+
+        $request->validate([
             'name' => ['required', 'string'],
             'episodes' => ['required', 'string'],
             'status' => ['required', 'string'],
             'info' => ['required', 'string'],
-//            'category_id'=> ['exists:categories'],
-            'image' => ['required', 'image', 'max:2048'],
+            'category_id'=> ['exists:categories'],
+            'image' => [ 'image', 'max:2048'],
         ]);
 
-        $series->update($validated);
+        $series->name        = $request['name'];
+        $series->episodes    = $request['episodes'];
+        $series->status      = $request['status'];
+        $series->info        = $request['info'];
+//        $series->category_id = $request['category_id'];
 
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->storePublicly('series', 'public');
+            $series->image = $path;
+        }
+
+        $series->save();
         return redirect()->route('series.show', $series);
+
     }
 
     /**

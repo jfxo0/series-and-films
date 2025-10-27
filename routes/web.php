@@ -27,11 +27,10 @@ Route::get('/about', function() {
     return view('about');
 })->name('about');
 
-//
-//    Route::get('/serie', [SerieController::class, 'edit'])->name('serie.edit');
-//    Route::patch('/serie', [SerieController::class, 'update'])->name('profile.update');
-//    Route::delete('/serie', [SerieController::class, 'destroy'])->name('serie.destroy');
-//
+
+Route::get('/admin', function() {
+    return view('admin');
+})->name('admin');
 
 
 Route::resource('series', SerieController::class);

@@ -27,3 +27,7 @@
 ## 2025-10-26 (zondag)
 - foto files toegevoegd
 - admin toggle toegevoegd
+
+## 2025-10-24 (maandag)
+- edit page met fotos gefixed
+- begonnen met css in de index pagina

@@ -11,7 +11,11 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
+        if(!auth()->user()->role){
+            abort(403);
+
+        }
+        return view('admin');
     }
 
     /**
