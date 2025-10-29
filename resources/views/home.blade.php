@@ -10,5 +10,4 @@
         <p>ur not logged in</p>
     @endguest
 
-
 </x-layout>

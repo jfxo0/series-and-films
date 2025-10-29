@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SerieController;
@@ -28,12 +29,14 @@ Route::get('/about', function() {
 })->name('about');
 
 
-Route::get('/admin', function() {
-    return view('admin');
-})->name('admin');
+//Route::get('/admin', function() {
+//    return view('admin');
+//})->name('admin');
 
 
 Route::resource('series', SerieController::class);
+Route::resource('admin', AdminController::class);
+
 //Route::get('/series', [SerieController::class, 'index']);
 //Route::get('/series/{serie}', [SerieController::class, 'show'])->name('series.show');
 

@@ -1,13 +1,31 @@
 <x-layout>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <x-header>Series </x-header>
+
+    <div class="max-w-7xl mx-auto flex-row px-4 py-10">
+        <a href="">
+            tags u will find ugh
+        </a>
+
+        <form action="{{route('series.index')}}" method="GET">
+            @csrf
+                <label for="filter">Search:</label>
+                <input type="text" name="filter" id="filter" value="{{old('filter')}}" required >
+            <button type="submit" class="bg-blue-600 text-black px-4 py-2 rounded">
+                search
+            </button>
+        </form>
+    </div>
+
+{{--    {{ $series = Serie::with('category')->get()}}--}}
+{{--    {{$series = \App\Models\Serie::with('category')->get()}}--}}
 
     <div class="max-w-7xl mx-auto px-4 py-10">
-        {{-- GRID WRAPPER --}}
+
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
             @foreach($series as $serie)
                 <div class="group relative bg-white rounded-lg shadow dark:bg-gray-900 overflow-hidden flex flex-col">
 
-                    {{-- IMAGE --}}
+
                     <div class="aspect-[4/3] w-full overflow-hidden">
                         <img
                             src="{{ asset('storage/' . $serie->image) }}"

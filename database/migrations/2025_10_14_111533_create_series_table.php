@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('image');
             $table->longText('info');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('category_id')->nullable()->constrained()->nullOnDelete();
-            $table->timestamps();
+            $table->foreignId('category_id')->nullable()->constrained('categories')->nullOnDelete();
+             $table->timestamps();
         });
     }
 

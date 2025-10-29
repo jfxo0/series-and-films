@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -11,11 +12,16 @@ class AdminController extends Controller
      */
     public function index()
     {
-        if(!auth()->user()->role){
-            abort(403);
+//        if(!auth()->user()->role){
+//            abort(403);
+//
+//        }
 
-        }
-        return view('admin');
+        $adminOverview = User::all();
+//        dd($adminOverview);
+
+
+        return view('admin', compact('adminOverview'));
     }
 
     /**

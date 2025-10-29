@@ -28,6 +28,14 @@
 - foto files toegevoegd
 - admin toggle toegevoegd
 
-## 2025-10-24 (maandag)
+## 2025-10-27 (maandag)
 - edit page met fotos gefixed
 - begonnen met css in de index pagina
+
+## 2025-10-28 (dinsdag)
+- css styling
+- category & serie gekoppeld
+
+## 2025-10-29
+- category toegepast in edit & create
+- genres & type te zien in show page

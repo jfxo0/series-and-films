@@ -29,8 +29,7 @@ class SerieController extends Controller
     public function create()
     {
          $categories = Category::all();
-//        return view('series.create');
-          return view('series.create', compact('categories'));
+        return view('series.create', compact('categories'));
     }
 
     /**
@@ -44,7 +43,7 @@ class SerieController extends Controller
             'episodes' => ['required', 'string'],
             'status' => ['required', 'string'],
             'info' => ['required', 'string'],
-//            'category_id'=> ['exists:categories'],
+            'category_id'=> ['exists:categories,id'],
             'image' => ['required', 'image', 'max:2048'],
         ]);
 
@@ -62,7 +61,7 @@ class SerieController extends Controller
         $serie->save();
 
         return redirect()->route('series.index');
-//        $request ->name = $request-> input("name");
+
     }
 
     /**
@@ -70,8 +69,8 @@ class SerieController extends Controller
      */
     public function show(Serie $series)
     {
-
-        return view('series.show', compact('series'));
+        $categories = Category::all();
+        return view('series.show', compact('series', 'categories'));
     }
 
     /**
@@ -80,8 +79,8 @@ class SerieController extends Controller
     public function edit(Serie $series)
     {
         //
-
-        return view('series.edit', compact('series'));
+        $categories = Category::all();
+        return view('series.edit', compact('series', 'categories'));
 
     }
 
@@ -96,7 +95,7 @@ class SerieController extends Controller
             'episodes' => ['required', 'string'],
             'status' => ['required', 'string'],
             'info' => ['required', 'string'],
-            'category_id'=> ['exists:categories'],
+            'category_id'=> ['required','exists:categories,id'],
             'image' => [ 'image', 'max:2048'],
         ]);
 
@@ -104,7 +103,7 @@ class SerieController extends Controller
         $series->episodes    = $request['episodes'];
         $series->status      = $request['status'];
         $series->info        = $request['info'];
-//        $series->category_id = $request['category_id'];
+        $series->category_id = $request['category_id'];
 
         if ($request->hasFile('image')) {
             $path = $request->file('image')->storePublicly('series', 'public');
@@ -112,7 +111,7 @@ class SerieController extends Controller
         }
 
         $series->save();
-        return redirect()->route('series.show', $series);
+        return redirect()->route('series.show', compact('series'));
 
     }
 

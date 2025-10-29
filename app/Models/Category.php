@@ -8,7 +8,7 @@ class Category extends Model
 {
     public function series()
     {
-        return $this->hasMany(Serie::class, 'category_id');
+        return $this->hasMany(Serie::class);
     }
 
 }
