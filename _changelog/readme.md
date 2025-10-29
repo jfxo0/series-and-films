@@ -39,3 +39,4 @@
 ## 2025-10-29
 - category toegepast in edit & create
 - genres & type te zien in show page
+

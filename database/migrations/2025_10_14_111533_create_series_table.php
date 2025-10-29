@@ -21,7 +21,7 @@ return new class extends Migration
             $table->longText('info');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('category_id')->nullable()->constrained('categories')->nullOnDelete();
-             $table->timestamps();
+              $table->timestamps();
         });
     }
 

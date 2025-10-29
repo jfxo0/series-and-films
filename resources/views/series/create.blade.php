@@ -52,7 +52,7 @@
             <select name="category_id" id="category_id">
                 <option value="" selected="selected">Select a category</option>
                 @foreach($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->type }}</option>
+                    <option value="{{ $category->id }}">{{ $category->type }} - {{$category->genre}}</option>
                 @endforeach
             </select>
         </div>

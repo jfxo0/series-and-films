@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Genre;
 use App\Models\Serie;
 use Illuminate\Http\Request;
 use phpDocumentor\Reflection\DocBlock\ExampleFinder;
@@ -28,6 +29,7 @@ class SerieController extends Controller
      */
     public function create()
     {
+
          $categories = Category::all();
         return view('series.create', compact('categories'));
     }
