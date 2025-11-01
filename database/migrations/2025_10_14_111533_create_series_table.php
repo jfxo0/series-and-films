@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('series', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('episodes');
-            $table->bigInteger('category_id');
+//            $table->bigInteger('category_id');
             $table->string('status');
             $table->string('name');
             $table->string('image');
             $table->longText('info');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('category_id')->nullable()->constrained('categories')->nullOnDelete();
+            $table->foreignId('category_id')->constrained('categories')->nullOnDelete();
               $table->timestamps();
         });
     }

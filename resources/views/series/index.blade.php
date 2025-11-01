@@ -2,22 +2,40 @@
     <x-header>Series </x-header>
 
     <div class="max-w-7xl mx-auto flex-row px-4 py-10">
-        <a href="">
-            tags u will find ugh
-        </a>
 
-        <form action="{{route('series.index')}}" method="GET">
-            @csrf
-                <label for="filter">Search:</label>
-                <input type="text" name="filter" id="filter" value="{{old('filter')}}" required >
-            <button type="submit" class="bg-blue-600 text-black px-4 py-2 rounded">
-                search
+        <form method="GET" action="{{ route('series.index') }}" class="mb-6 flex gap-4">
+            {{-- category filter --}}
+            <select name="category" class="bg-gray-800 border border-gray-700 rounded px-3 py-2">
+                <option value="">All categories</option>
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}" {{ request('category') == $category->id ? 'selected' : '' }}>
+                        {{ $category->type }} — {{ $category->genre }}
+                    </option>
+                @endforeach
+            </select>
+
+            {{-- search --}}
+            <input
+                type="text"
+                name="search"
+                value="{{ request('search') }}"
+                placeholder="Search in name or info..."
+                class="bg-gray-800 border border-gray-700 rounded px-3 py-2 w-64"
+            >
+
+            <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded">
+                Filter
             </button>
+
+            <a href="{{ route('series.index') }}" class="bg-gray-700 text-white px-4 py-2 rounded">
+                Reset
+            </a>
         </form>
     </div>
 
 {{--    {{ $series = Serie::with('category')->get()}}--}}
 {{--    {{$series = \App\Models\Serie::with('category')->get()}}--}}
+
 
     <div class="max-w-7xl mx-auto px-4 py-10">
 

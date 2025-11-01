@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use App\Models\Genre;
 use App\Models\Serie;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use phpDocumentor\Reflection\DocBlock\ExampleFinder;
 
 class SerieController extends Controller
@@ -13,15 +13,25 @@ class SerieController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
 
-        $series = Serie::all();
+    use AuthorizesRequests;
+
+    public function index(Request $request)
+    {
+//
+//        $series = Serie::all();
 //        dd($series);
 
 
 
-        return view('series.index', compact('series'));
+        $series = Serie::with('category')
+            ->filter(request(['search', 'category']))
+            ->paginate(12)
+            ->withQueryString();
+
+        $categories = Category::all();
+
+        return view('series.index', compact('series', 'categories'));
     }
 
     /**
@@ -58,6 +68,7 @@ class SerieController extends Controller
         $serie->info = $request->input('info');
         $serie->category_id = $request->input('category_id');
         $serie->image = $nameOfFile;
+        $serie->user_id = auth()->id();
 
 //
         $serie->save();
@@ -80,7 +91,8 @@ class SerieController extends Controller
      */
     public function edit(Serie $series)
     {
-        //
+
+        $this->authorize('update', $series);
         $categories = Category::all();
         return view('series.edit', compact('series', 'categories'));
 
@@ -92,6 +104,7 @@ class SerieController extends Controller
     public function update(Request $request, Serie $series)
     {
 
+        $this->authorize('update', $series);
         $request->validate([
             'name' => ['required', 'string'],
             'episodes' => ['required', 'string'],
@@ -122,6 +135,7 @@ class SerieController extends Controller
      */
     public function destroy(Serie $series)
     {
+        $this->authorize('delete', $series);
         $series->delete();
         return redirect()->route('series.index');
     }

@@ -21,8 +21,12 @@
     <x-button href="{{route('series.index')}}">
         go back
     </x-button>
+    @can('update', $series)
     <x-button href="{{ route('series.edit',  $series) }}">Edit page</x-button>
-    <x-button>
+    @endcan
+
+    @can('update', $series)
+        <x-button>
         <form action="{{ route('series.destroy', $series) }}" method="POST">
             @csrf
             @method('DELETE')
@@ -30,6 +34,6 @@
            <button type="submit">Delete</button>
        </form>
    </x-button>
-
+    @endcan
 
 </x-layout>

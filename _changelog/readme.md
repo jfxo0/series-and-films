@@ -36,7 +36,12 @@
 - css styling
 - category & serie gekoppeld
 
-## 2025-10-29
+## 2025-10-29 (woensdag)
 - category toegepast in edit & create
 - genres & type te zien in show page
 
+## 2025-10-30 (donderdag)
+- filter aangemaakt
+
+## 2025-11-1 (zaterdag)
+- authorization gemaakt
