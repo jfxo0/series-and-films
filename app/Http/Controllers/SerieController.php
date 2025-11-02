@@ -38,9 +38,10 @@ class SerieController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Serie $series)
     {
 
+        $this->authorize('create', $series);
          $categories = Category::all();
         return view('series.create', compact('categories'));
     }
