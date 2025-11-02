@@ -47,3 +47,4 @@
 - authorization gemaakt
 - account actief of niet actief zetten
 - dieper validatie
+- css styling
