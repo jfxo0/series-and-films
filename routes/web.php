@@ -29,6 +29,9 @@ Route::get('/about', function() {
 })->name('about');
 
 
+Route::get('/admin', [AdminController::class, 'index'])->middleware(['auth', 'can:view-admin']);
+
+
 //Route::get('/admin', function() {
 //    return view('admin');
 //})->name('admin');

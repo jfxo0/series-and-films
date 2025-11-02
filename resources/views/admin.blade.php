@@ -1,4 +1,5 @@
 <x-layout>
+
     <x-header>Admin Overview </x-header>
     @foreach($adminOverview as $user)
         <h3 class="text-lg font-bold text-gray-900 dark:text-black mb-4">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -10,15 +11,15 @@ class AdminController extends Controller
     /**
      * Display a listing of the resource.
      */
+    use AuthorizesRequests;
     public function index()
     {
-//        if(!auth()->user()->role){
-//            abort(403);
-//
-//        }
 
+
+        $this->authorize('view-admin');
         $adminOverview = User::all();
 //        dd($adminOverview);
+//        dd(auth()->user());
 
 
         return view('admin', compact('adminOverview'));
