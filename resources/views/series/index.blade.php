@@ -4,7 +4,6 @@
     <div class="max-w-7xl mx-auto flex-row px-4 py-10">
 
         <form method="GET" action="{{ route('series.index') }}" class="mb-6 flex gap-4">
-            {{-- category filter --}}
             <select name="category" class="bg-gray-800 border border-gray-700 rounded px-3 py-2">
                 <option value="">All categories</option>
                 @foreach($categories as $category)
@@ -14,14 +13,8 @@
                 @endforeach
             </select>
 
-            {{-- search --}}
-            <input
-                type="text"
-                name="search"
-                value="{{ request('search') }}"
-                placeholder="Search in name or info..."
-                class="bg-gray-800 border border-gray-700 rounded px-3 py-2 w-64"
-            >
+
+            <input type="text" name="search" value="{{ request('search') }}" placeholder="Search in name or info..." class="bg-gray-800 border border-gray-700 rounded px-3 py-2 w-64">
 
             <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded">
                 Filter
@@ -45,13 +38,8 @@
 
 
                     <div class="aspect-[4/3] w-full overflow-hidden">
-                        <img
-                            src="{{ asset('storage/' . $serie->image) }}"
-                            alt="{{ $serie->name }}"
-                            class="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
-                        />
+                        <img src="{{ asset('storage/' . $serie->image) }}" alt="{{ $serie->name }}" class="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"/>
                     </div>
-
 
                     <div class="flex flex-col flex-1 p-6 text-center">
                         <span class="text-sm font-medium text-indigo-500 mb-1">
@@ -73,9 +61,12 @@
                             </a>
                         </div>
                     </div>
-
                 </div>
             @endforeach
         </div>
+    </div>
+
+    <div class="mt-8 flex justify-center">
+        {{ $series->links() }}
     </div>
 </x-layout>

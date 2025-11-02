@@ -27,8 +27,9 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
-        // nadat je de user hebt gevonden / auth attempt is gelukt:
-        if (! $request->user()->active) {
+
+        // kijken of de user actief is, zo niet wordt je uitgelogd met een error
+        if (!$request->user()->active) {
             Auth::logout();
 
             return back()->withErrors([

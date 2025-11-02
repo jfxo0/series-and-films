@@ -48,12 +48,12 @@
                                     Series
                                 </a>
                             </li>
-                            <li>
-                                <a href="{{route('about')}}"
-                                   class="flex py-2 text-base font-medium text-body-color hover:text-dark lg:ml-12 lg:inline-flex dark:text-dark-6 dark:hover:text-black">
-                                    About
-                                </a>
-                            </li>
+{{--                            <li>--}}
+{{--                                <a href="{{route('about')}}"--}}
+{{--                                   class="flex py-2 text-base font-medium text-body-color hover:text-dark lg:ml-12 lg:inline-flex dark:text-dark-6 dark:hover:text-black">--}}
+{{--                                    About--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
                             @if (Route::has('login'))
                                 @auth
                                     <li>
