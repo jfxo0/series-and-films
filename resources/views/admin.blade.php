@@ -1,21 +1,30 @@
+
+
 <x-layout>
 
-    <x-header>Admin Overview </x-header>
-    @foreach($adminOverview as $user)
-        <h3 class="text-lg font-bold text-gray-900 dark:text-black mb-4">
-            {{ $user->name }}
-        </h3>
-        <h3 class="text-lg font-bold text-gray-900 dark:text-black mb-4">
-            {{ $user->email }}
-        </h3>
+        <div class="max-w-6xl mx-auto py-10">
+            <h1 class="text-3xl font-bold mb-8">Admin dashboard</h1>
 
-    @if($user->role)
-            <h3>{{$user->name}} is admin</h3>
-        @else
-            <h3>{{$user->name}} is een gebruiker</h3>
-    @endif
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <a href="{{ route('admin.series') }}"
+                   class="bg-[#1f2937] text-white rounded-lg p-6 shadow hover:bg-[#111827] transition">
+                    <p class="text-sm opacity-70">Series</p>
+                    <p class="text-3xl font-bold">{{ $seriesCount }}</p>
+                </a>
 
-        <button href="">ACTIEF</button>
+                <a href="{{ route('admin.categories') }}"
+                   class="bg-[#1f2937] text-white rounded-lg p-6 shadow hover:bg-[#111827] transition">
+                    <p class="text-sm opacity-70">Categories</p>
+                    <p class="text-3xl font-bold">{{ $categoriesCount }}</p>
+                </a>
 
-    @endforeach
+                <a href="{{ route('admin.users') }}"
+                   class="bg-[#1f2937] text-white rounded-lg p-6 shadow hover:bg-[#111827] transition">
+                    <p class="text-sm opacity-70">Users</p>
+                    <p class="text-3xl font-bold">{{ $usersCount }}</p>
+                </a>
+            </div>
+        </div>
+
+
 </x-layout>

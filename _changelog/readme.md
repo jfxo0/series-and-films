@@ -45,3 +45,5 @@
 
 ## 2025-11-1 (zaterdag)
 - authorization gemaakt
+- account actief of niet actief zetten
+- dieper validatie

@@ -7,6 +7,7 @@ use App\Models\Serie;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use phpDocumentor\Reflection\DocBlock\ExampleFinder;
+use function Laravel\Prompts\error;
 
 class SerieController extends Controller
 {
@@ -93,6 +94,12 @@ class SerieController extends Controller
     {
 
         $this->authorize('update', $series);
+        $seriesCount = Serie::where('user_id', auth()->id())->count();
+
+        if ($seriesCount < 2) {
+            return back()->with('error', 'Je moet minstens 2 series hebben gemaakt om een serie te kunnen bewerken.');
+        }
+
         $categories = Category::all();
         return view('series.edit', compact('series', 'categories'));
 
@@ -139,4 +146,6 @@ class SerieController extends Controller
         $series->delete();
         return redirect()->route('series.index');
     }
+
+
 }

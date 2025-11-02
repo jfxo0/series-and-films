@@ -1,5 +1,10 @@
 <x-layout>
 <x-header>{{ $series->name }} </x-header>
+    @if (session('error'))
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+            <strong>Let op!</strong> {{ session('error') }}
+        </div>
+    @endif
 
 
     <div class="flex">
@@ -24,6 +29,7 @@
     @can('update', $series)
     <x-button href="{{ route('series.edit',  $series) }}">Edit page</x-button>
     @endcan
+
 
     @can('update', $series)
         <x-button>

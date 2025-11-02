@@ -27,6 +27,15 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+        // nadat je de user hebt gevonden / auth attempt is gelukt:
+        if (! $request->user()->active) {
+            Auth::logout();
+
+            return back()->withErrors([
+                'email' => 'Je account is gedeactiveerd door een admin.',
+            ]);
+        }
+
 
         return redirect()->intended(route('series.index', absolute: false));
     }
@@ -44,4 +53,7 @@ class AuthenticatedSessionController extends Controller
 
         return redirect('/');
     }
+
+
+
 }

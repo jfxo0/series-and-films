@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Serie;
 use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
@@ -21,9 +23,43 @@ class AdminController extends Controller
 //        dd($adminOverview);
 //        dd(auth()->user());
 
+        $seriesCount     = Serie::count();
+        $categoriesCount = Category::count();
+        $usersCount      = User::count();
 
-        return view('admin', compact('adminOverview'));
+        return view('admin', compact('adminOverview', 'seriesCount', 'categoriesCount', 'usersCount'));
     }
+
+
+    public function series()
+    {
+        $series = Serie::with('category', 'user')->latest()->get();
+
+        return view('admin.series', compact('series'));
+    }
+
+    public function categories()
+    {
+        $categories = Category::latest()->get();
+
+        return view('admin.categories', compact('categories'));
+    }
+
+    public function users()
+    {
+        $users = User::latest()->get();
+
+        return view('admin.users', compact('users'));
+    }
+
+    public function toggleActive(User $user)
+    {
+        $user->active = ! $user->active;
+        $user->save();
+
+        return back()->with('success', 'Status aangepast.');
+    }
+
 
     /**
      * Show the form for creating a new resource.

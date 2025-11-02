@@ -30,7 +30,12 @@ Route::get('/about', function() {
 
 
 Route::get('/admin', [AdminController::class, 'index'])->middleware(['auth', 'can:view-admin']);
+Route::get('/admin/series', [AdminController::class, 'series'])->name('admin.series');
+Route::get('/admin/categories', [AdminController::class, 'categories'])->name('admin.categories');
+Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users');
 
+Route::post('/admin/users/{user}/toggle', [AdminController::class, 'toggleActive'])
+    ->name('users.toggle');
 
 //Route::get('/admin', function() {
 //    return view('admin');
