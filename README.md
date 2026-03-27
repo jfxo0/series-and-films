@@ -5,8 +5,6 @@ my first laravel project where you can see a list of series & films and create t
 
 ##  Features
 - CRUD
-- Feature 2
-- Feature 3
 
 ## Used
 - Laravel
